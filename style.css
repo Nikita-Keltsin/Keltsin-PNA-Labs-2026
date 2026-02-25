@@ -1,4 +1,16 @@
-
+/* Стилизованный заголовок */
+.title {
+  font-family: 'Courier New', monospace; /* тот же шрифт, что и у калькулятора */
+  font-size: 2.2rem;                     /* крупный, но не слишком */
+  color: #33ff33;                         /* ярко-зелёный, как на дисплее */
+  text-align: center;                      /* центрируем текст */
+  margin-bottom: 25px;                     /* отступ от калькулятора */
+  text-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* неоновое свечение */
+  letter-spacing: 4px;                      /* разреженные буквы для эффекта "цифрового табло" */
+  border-bottom: 2px solid #33ff33;         /* подчёркивание как у индикатора */
+  padding-bottom: 8px;                       /* небольшой отступ от линии */
+  text-transform: uppercase;                 /* заглавные буквы (опционально) */
+}
 /* опишем базовый стиль кнопки калькулятора */
 .my-btn { 
   margin-right: 5px;           /* задаем отступ от кнопки справа */
@@ -31,7 +43,9 @@
   box-shadow: 0 1px 1px rgba(0,0,0,0.5), inset 0 1px 0 #2a2a2a;
   filter: brightness(120%); /* увеличим интенсивность цвета для эффекта вспышки */
 }
-
+.my-btn.primary:hover {
+  background: #e5943c;
+}
 /* селектор для кнопок первостепенных операций */
 .my-btn.primary { 
   background: #cc7f2a; /* цвет кнопки оранжевый */
@@ -39,17 +53,21 @@
   color: #ffffff;
   text-shadow: 0 1px 2px black;
 }
-
+.my-btn.secondary:hover {
+  background: #404040;
+}
 /* селектор для кнопок второстепенных операций */
 .my-btn.secondary { 
   background: #2d2d2d; /* цвет кнопки сервый */
   border-color: #444;
   color: #cccccc;
 }
-
+.my-btn.execute:hover {
+  background: #3a6b3a;
+}
 /* селектор для кнопки расчета выражения (=) */
 .my-btn.execute { 
-  width: 110px;          /* сделаем кнопку шире других */
+  width: 115px;          /* сделаем кнопку шире других */
   background: #2e7d32;    /* зеленый, как пуск */
   border-color: #1b5e20;
   color: #ffffff;
@@ -59,7 +77,7 @@
 
 /* селектор для поля вывода результата */
 .result { 
-  width: 220px;
+  width: 230px;
   height: 50px;
   margin-bottom: 15px;         /* отступ снизу */
   padding-right: 10px;         /* выступ справа */
@@ -75,6 +93,12 @@
 }
 
 body {
-    background-color: #1e1e1e;
+    margin: 0; 
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    background-color: #05030c;
     font-family: 'Courier New', monospace;
 }
