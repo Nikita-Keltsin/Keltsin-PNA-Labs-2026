@@ -74,7 +74,7 @@ window.onload = function() {
             default:
                 break;
         }
-        a = expressionResult.toString
+        a = expressionResult.toString()
         b = ''
         selectedOperation = null
 
