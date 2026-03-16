@@ -1,104 +1,154 @@
-/* Стилизованный заголовок */
-.title {
-  font-family: 'Courier New', monospace; /* тот же шрифт, что и у калькулятора */
-  font-size: 2.2rem;                     /* крупный, но не слишком */
-  color: #33ff33;                         /* ярко-зелёный, как на дисплее */
-  text-align: center;                      /* центрируем текст */
-  margin-bottom: 25px;                     /* отступ от калькулятора */
-  text-shadow: 0 0 15px rgba(0, 255, 0, 0.7); /* неоновое свечение */
-  letter-spacing: 4px;                      /* разреженные буквы для эффекта "цифрового табло" */
-  border-bottom: 2px solid #33ff33;         /* подчёркивание как у индикатора */
-  padding-bottom: 8px;                       /* небольшой отступ от линии */
-  text-transform: uppercase;                 /* заглавные буквы (опционально) */
-}
-/* опишем базовый стиль кнопки калькулятора */
-.my-btn { 
-  margin-right: 5px;           /* задаем отступ от кнопки справа */
-  margin-top: 5px;             /* задаем отступ от кнопки сверху*/
-  width: 50px;                 /* задаем ширину кнопки */
-  height: 50px;                /* задаем высоту кнопки */
-  border-radius: 4px;          /* округляем кнопку */
-  border: 1px solid #555;                /* отключаем обводку */
-  background: #3a3a3a;         /* задаем серый цвет кнопки */
-  color: #e0e0e0;                /* задаем белый цвет текста внутри кнопки */
-  font-size: 1.5rem;           /* увеличим размер шрифта */
-  font-family: 'Courier New', monospace; /* сменим шрифт */
-  cursor: pointer;             /* при наведении на кнопку курсор будет изменен
-                                  со стрелки на 'указательный палец' */
-  user-select: none;
-  box-shadow: 0 2px 2px rgba(0,0,0,0.5), inset 0 -1px 0 #2a2a2a;   /* отключаем возможность выделить текст внутри кнопки */
-  transition: all 0.1s ease;
-} 
-
-/* hover - это состояние элемента, когда на него наведен курсор */
-.my-btn:hover {
-  background: #4f4f4f;
-  border-color: #777;
-  color: #ffffff /* при наведение курсора на кнопку, она будет окрашена в белый*/
-}
-
-/* active - это состояние активации элемента. В случае кнопки - нажатие на нее */
-.my-btn:active {
-  transform: translateY(1px); /* эффект нажатия */
-  box-shadow: 0 1px 1px rgba(0,0,0,0.5), inset 0 1px 0 #2a2a2a;
-  filter: brightness(120%); /* увеличим интенсивность цвета для эффекта вспышки */
-}
-.my-btn.primary:hover {
-  background: #e5943c;
-}
-/* селектор для кнопок первостепенных операций */
-.my-btn.primary { 
-  background: #cc7f2a; /* цвет кнопки оранжевый */
-  border-color: #b36b1a;
-  color: #ffffff;
-  text-shadow: 0 1px 2px black;
-}
-.my-btn.secondary:hover {
-  background: #404040;
-}
-/* селектор для кнопок второстепенных операций */
-.my-btn.secondary { 
-  background: #2d2d2d; /* цвет кнопки сервый */
-  border-color: #444;
-  color: #cccccc;
-}
-.my-btn.execute:hover {
-  background: #3a6b3a;
-}
-/* селектор для кнопки расчета выражения (=) */
-.my-btn.execute { 
-  width: 115px;          /* сделаем кнопку шире других */
-  background: #2e7d32;    /* зеленый, как пуск */
-  border-color: #1b5e20;
-  color: #ffffff;
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-/* селектор для поля вывода результата */
-.result { 
-  width: 230px;
-  height: 50px;
-  margin-bottom: 15px;         /* отступ снизу */
-  padding-right: 10px;         /* выступ справа */
-  border: 2px solid #3a3a3a;
-  border-radius: 0;
-  background: #000000;       /* цвет можно задавать и таким образом */
-  text-align: right;           /* примагнитим текст к правой стороне */
-  color: #33ff33;              /* цвет текста белый */
-  font-size: 2rem;
-  font-family: 'Courier New', monospace;
-  line-height: 50px;
-  box-shadow: inset 0 0 10px rgba(0, 255, 0, 0.3);
-}
 
 body {
-    margin: 0; 
-    min-height: 100vh; 
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    background-color: #05030c;
-    font-family: 'Courier New', monospace;
+  margin: 0;                      
+  min-height: 100vh;             
+  background-color: #f0f2f5;      
+  display: flex;                  
+  flex-direction: column;         
+  justify-content: center;        
+  align-items: center;            
+  font-family: 'Courier New', monospace; 
+}
+
+.title {
+  color: #2c3e50;                 
+  font-size: 1.8rem;              
+  text-align: center;             
+  margin-top: 0;                  
+  margin-bottom: 30px;            
+  font-weight: 600;               
+  letter-spacing: 2px;           
+  text-transform: uppercase;      
+  border-bottom: 4px solid #1b5c87; 
+  padding-bottom: 10px;           
+  font-family: "Open Sans" ,'Courier New', sans-serif; 
+  text-shadow: none; 
+}
+
+.dark-blue {
+  color:#2c3e50
+}
+
+.green {
+  color: #276221
+}
+
+body > div {
+  background: #ffffff;            
+  padding: 30px 25px;             
+  border-radius: 20px;           
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #e2e8f0;      
+  max-width: 275px;               
+  width: 100%;                   
+}
+
+.result {
+  width: auto;                    
+  height: 70px;                   
+  background: #e0e0e8;           
+  border: 1px solid #e2e8f0;      
+  border-radius: 12px;           
+  margin-bottom: 25px;            
+  padding: 0 18px;                
+  color: #2c3e50;                 
+  font-size: 2.6rem;             
+  font-family: 'Courier New', monospace;
+  text-align: right;              
+  line-height: 70px;              
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02); 
+  letter-spacing: 2px;            
+}
+.my-btn {
+  width: 55px;                    
+  height: 55px;                 
+  margin-right: 5px;              
+  margin-top: 5px;                
+  border: 1px solid #e2e8f0;      
+  border-radius: 12px;            
+  background: #ffffff;            
+  color: #2c3e50;                 
+  font-size: 1.7rem;              
+  font-family: 'Courier New', monospace;
+  cursor: pointer;                
+  user-select: none;              
+  transition: all 0.15s ease;     
+  box-shadow: none;    
+}
+
+.my-btn:hover {
+  background: #f0f7ff;               
+  border-color: #3498db;             
+  color: #3498db;                  
+  transform: scale(1.02);            
+  box-shadow: 0 4px 8px rgba(52, 152, 219, 0.2);   
+}
+
+.my-btn:active {
+  transform: scale(0.98);
+  background: #e6f0fa;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+  filter: brightness(0.98);   
+}
+
+.my-btn.primary {
+  background: #ffffff;
+  color: #2c3e50;                    
+  border-color: #175782;             
+  font-weight: 600;         
+}
+
+.my-btn.primary:hover {
+  background: #83b5e8;
+  color: #2c3e50;                    
+  border-color: #175782;      
+}
+
+.my-btn.execute {
+  width: 124px;
+  background: #276221;              
+  border-color: #acd8a7;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2rem;            
+}
+
+.my-btn.execute:hover {
+  background: #8bce8b;              
+  border-color: #acd8a7;
+  color: #ffffff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);  
+}
+
+.my-btn.execute:active {
+  transform: scale(0.98);
+  background: #1a5889;
+}
+
+.my-btn.secondary {
+  background: #f4f6f9;             
+  border-color: #d0d9e5;
+  color: #5a6f8c;               
+}
+
+
+.my-btn.secondary:hover {
+  background: #e9ecf2;
+  color: #2c3e50;
+  border-color: #a0b8d0;      
+}
+
+h2 {
+  color: #2c3e50;
+  font-size: 1.0rem;              
+  text-align: center;             
+  margin-top: 20px;                  
+  margin-bottom: 20px;            
+  font-weight: 200;               
+  letter-spacing: 2px;           
+  text-transform: uppercase;      
+  padding-bottom: 10px;           
+  font-family: "Open Sans" , sans-serif; 
+  text-shadow: none; 
 }
