@@ -20,9 +20,13 @@ body {
   letter-spacing: 2px;           
   text-transform: uppercase;      
   border-bottom: 4px solid #1b5c87; 
-  padding-bottom: 10px;           
+  padding-bottom: 3px;           
   font-family: "Open Sans" ,'Courier New', sans-serif; 
   text-shadow: none; 
+}
+
+.image {
+  padding-top: 30px;
 }
 
 .dark-blue {
@@ -39,12 +43,15 @@ body > div {
   border-radius: 20px;           
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
   border: 1px solid #e2e8f0;      
-  max-width: 275px;               
+  max-width: 440px;               
   width: 100%;                   
 }
 
 .result {
-  width: auto;                    
+  width: 400px;
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;            
   height: 70px;                   
   background: #e0e0e8;           
   border: 1px solid #e2e8f0;      
@@ -60,8 +67,8 @@ body > div {
   letter-spacing: 2px;            
 }
 .my-btn {
-  width: 55px;                    
-  height: 55px;                 
+  width: 75px;                    
+  height: 75px;                 
   margin-right: 5px;              
   margin-top: 5px;                
   border: 1px solid #e2e8f0;      
@@ -100,12 +107,12 @@ body > div {
 
 .my-btn.primary:hover {
   background: #83b5e8;
-  color: #2c3e50;                    
+  color: #e7edf2;                    
   border-color: #175782;      
 }
 
 .my-btn.execute {
-  width: 124px;
+  width: 163px;
   background: #276221;              
   border-color: #acd8a7;
   color: #ffffff;
@@ -138,6 +145,26 @@ body > div {
   color: #2c3e50;
   border-color: #a0b8d0;      
 }
+
+#btn_color_bg, #btn_color_screen {
+  width: 210px;
+  background: #5a6f8c;
+  color:#ffffff;
+  margin: auto;
+}
+.my-btn.special {
+  background: #1b5c87;
+  color: #ffffff;
+  width: 430px;
+  text-align: center;
+  font-size: 1.5rem;
+  border-color: #d7eb1b;
+}
+
+.my-btn.special:hover {
+  background: #70c6ff;
+}
+
 
 h2 {
   color: #2c3e50;
