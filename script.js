@@ -4,10 +4,6 @@ window.onload = function() {
     let expressionResult = '';
     let selectedOperation = null;
 
-    const outputElement = document.getElementById("result");
-
-    const digitButtons = document.querySelectorAll('[id ^= "btn_digit_"]');
-
     const K = 5.0;
     const alpha = 0.8;
     let prevY = 0;
@@ -21,6 +17,11 @@ window.onload = function() {
         outputElement.innerHTML = value;
         outputElement.scrollLeft = outputElement.scrollWidth;
     }
+
+    const outputElement = document.getElementById("result");
+
+    const digitButtons = document.querySelectorAll('[id ^= "btn_digit_"]');
+
     function onDigitButtonClicked(digit){
         if (!selectedOperation){
             if ((digit != ".") || (digit == "." && !a.includes(digit))) {
