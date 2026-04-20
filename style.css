@@ -1,75 +1,107 @@
-/* Базовый стиль для всех кнопок */
-.my-btn {
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: #ffffff;
-  color: #2c3e50;
-  font-size: 1.2rem;
-  font-family: 'Courier New', monospace;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  padding: 10px 20px;
-  font-weight: 600;
-  display: inline-flex;
-  justify-content: center;
+body {
+  margin: 0;                      
+  min-height: 100vh;             
+  background-color: #f0f2f5;      
+  display: flex;                  
+  flex-direction: column;         
+  align-items: center;            
+  font-family: 'Courier New', monospace; 
+}
+
+.title {
+  color: #2c3e50;                 
+  font-size: 1.8rem;              
+  text-align: center;             
+  margin-top: 20px;                  
+  margin-bottom: 30px;            
+  font-weight: 600;               
+  letter-spacing: 2px;           
+  text-transform: uppercase;      
+  border-bottom: 4px solid #1b5c87; 
+  padding-bottom: 3px;           
+  font-family: "Open Sans", 'Courier New', sans-serif; 
+}
+
+.image { padding-top: 30px; }
+.dark-blue { color:#2c3e50; }
+.green { color: #276221; }
+
+/* --- ДОБАВЛЕНО ДЛЯ ГАЛЕРЕИ НА БАЗЕ ТВОЕГО CSS --- */
+/* Этот класс - 100% копия стилей твоего body > div из калькулятора */
+.filter-card, .main-container {
+  background: #ffffff;            
+  padding: 30px 25px;             
+  border-radius: 20px;           
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+  border: 1px solid #e2e8f0;      
+  max-width: 440px;               
+  width: 100%;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-/* Эффект нажатия (общее для всех) */
-.my-btn:active {
-  transform: scale(0.96);
+.gallery-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 1400px;
+}
+/* ------------------------------------------------ */
+
+.result {
+  width: 90%; /* Адаптировано под ширину карточки */
+  overflow-x: auto;
+  white-space: nowrap;           
+  height: 70px;                   
+  background: #e0e0e8;           
+  border: 1px solid #e2e8f0;      
+  border-radius: 12px;           
+  margin-bottom: 25px;            
+  padding: 0 18px;                
+  color: #2c3e50;                 
+  font-size: 2.0rem;             
+  font-family: 'Courier New', monospace;
+  text-align: center; /* Центрируем текст для карточки */             
+  line-height: 70px;              
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.02); 
+  letter-spacing: 2px;            
 }
 
-/* Primary - основные кнопки (например, Домой, математические операции) */
-.my-btn.primary {
-  background: #ffffff;
-  color: #2c3e50;
-  border-color: #1b5c87;
+.my-btn {
+  width: 75px; height: 75px;                 
+  margin: 5px;              
+  border: 1px solid #e2e8f0;      
+  border-radius: 12px;            
+  background: #ffffff;            
+  color: #2c3e50;                 
+  font-size: 1.7rem;              
+  font-family: 'Courier New', monospace;
+  cursor: pointer;                
+  transition: all 0.15s ease;     
 }
+.my-btn:hover { background: #f0f7ff; border-color: #3498db; color: #3498db; transform: scale(1.02); }
+.my-btn:active { transform: scale(0.98); background: #e6f0fa; }
 
-.my-btn.primary:hover {
-  background: #eef5fa;
-  color: #1b5c87;
-  border-color: #175782;
-  box-shadow: 0 4px 8px rgba(27, 92, 135, 0.15);
-}
+.my-btn.primary { background: #ffffff; color: #2c3e50; border-color: #175782; font-weight: 600; }
+.my-btn.primary:hover { background: #83b5e8; color: #e7edf2; border-color: #175782; }
 
-/* Secondary - второстепенные кнопки (Удалить, сброс) */
-.my-btn.secondary {
-  background: #f4f6f9;
-  border-color: #d0d9e5;
-  color: #5a6f8c;
-}
-
-.my-btn.secondary:hover {
-  background: #e2e8f0;
-  color: #2c3e50;
-  border-color: #cbd5e1;
-}
-
-/* Execute - кнопки акцентного действия (Добавить) */
 .my-btn.execute {
-  background: #276221;
-  border-color: #1e4d19;
-  color: #ffffff;
+  width: 163px; background: #276221; border-color: #acd8a7; color: #ffffff; font-weight: 700; font-size: 2rem;            
 }
+.my-btn.execute:hover { background: #8bce8b; color: #ffffff; transform: scale(1.02); }
+.my-btn.execute:active { background: #1a5889; }
 
-.my-btn.execute:hover {
-  background: #317a2a;
-  border-color: #276221;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(39, 98, 33, 0.3);
-}
+.my-btn.secondary { background: #f4f6f9; border-color: #d0d9e5; color: #5a6f8c; }
+.my-btn.secondary:hover { background: #e9ecf2; color: #2c3e50; border-color: #a0b8d0; }
 
-/* Special - кнопка запуска анализа/симуляции (из твоей темы) */
 .my-btn.special {
-  background: #1b5c87;
-  color: #ffffff;
-  border-color: #175782;
+  background: #1b5c87; color: #ffffff; width: 430px; text-align: center; font-size: 1.5rem; border-color: #d7eb1b;
 }
+.my-btn.special:hover { background: #70c6ff; }
 
-.my-btn.special:hover {
-  background: #2475ab;
-  color: #ffffff;
-  box-shadow: 0 4px 10px rgba(27, 92, 135, 0.3);
+h2 {
+  color: #2c3e50; font-size: 1.0rem; text-align: center; margin-top: 20px; font-family: "Open Sans", sans-serif; 
 }
