@@ -1,37 +1,38 @@
+// файл: src/mockData.js
 export let filtersData = [
     {
         id: 1,
-        name: "ФНЧ(Low-pass)",
-        type: "IIR(БИХ)",
-        description:"Пропускает частоты ниже частоты среза и подавляет высокие частоты. Применяется в аудио для среза ВЧ шумов и сглаживания графиков.",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Lowpass_Filter_RC_frequency_response.svg/640px-Lowpass_Filter_RC_frequency_response.svg.png"
+        name: "ФНЧ (Low-pass)",
+        type: "IIR (БИХ)",
+        description: "Пропускает частоты ниже частоты среза и подавляет высокие частоты. Применяется в аудио для среза ВЧ шумов и сглаживания графиков.",
+        imageUrl: "https://images.unsplash.com/photo-1516280440502-86105f25a975?w=500&q=80"
     },
     {
         id: 2,
-        name: "ФВЧ(High-pass)",
-        type: "FIR(КИХ)",
+        name: "ФВЧ (High-pass)",
+        type: "FIR (КИХ)",
         description: "Пропускает частоты выше частоты среза. Широко используется для удаления постоянной составляющей (DC offset) из сигнала.",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Highpass_Filter_RC_frequency_response.svg/640px-Highpass_Filter_RC_frequency_response.svg.png"
+        imageUrl: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=500&q=80"
     },
     {
         id: 3,
         name: "Полосовой (Band-pass)",
-        type: "IIR(БИХ)",
+        type: "IIR (БИХ)",
         description: "Пропускает сигнал только в определенном диапазоне частот, подавляя всё, что выше и ниже. Используется в эквалайзерах и радиоприемниках.",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Bandpass_Filter_Frequency_Response.svg/640px-Bandpass_Filter_Frequency_Response.svg.png"
+        imageUrl: "https://images.unsplash.com/photo-1519692933481-e162a57d6721?w=500&q=80"
     },
     {
         id: 4,
-        name: "Режекторный(Notch)",
+        name: "Режекторный (Notch)",
         type: "FIR (КИХ)",
         description: "Подавляет сигнал в очень узком диапазоне частот (вырезает полосу). Идеален для удаления сетевой наводки (50 Гц или 60 Гц) из аудио.",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Band-stop_filter_frequency_response.svg/640px-Band-stop_filter_frequency_response.svg.png"
+        imageUrl: "https://images.unsplash.com/photo-1612282130134-f41e57c66708?w=500&q=80"
     },
     {
         id: 5,
-        name:"Скользящее среднее",
+        name: "Скользящее среднее",
         type: "FIR (КИХ)",
         description: "Простейший фильтр нижних частот во временной области. Усредняет несколько соседних отсчетов. Отлично убирает случайный белый шум.",
-        imageUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/SMA_vs_EMA.svg/640px-SMA_vs_EMA.svg.png"
+        imageUrl: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80"
     }
 ];

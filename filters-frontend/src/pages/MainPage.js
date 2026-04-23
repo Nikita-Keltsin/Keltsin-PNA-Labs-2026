@@ -1,5 +1,5 @@
+// файл: src/pages/MainPage.js
 import { filtersData } from '../mockData.js';
-import { Header } from '../components/Header.js';
 import { FilterCard } from '../components/FilterCard.js';
 
 export class MainPage {
@@ -11,57 +11,77 @@ export class MainPage {
 
     render() {
         this.root.innerHTML = '';
-        const header = new Header().getHTML();
         const cardsHTML = this.currentData.map(f => new FilterCard().getHTML(f)).join('');
 
         const html = `
-            ${header}
-            <div class="toolbar">
-                <h2>Виды фильтров</h2>
-                <input type="text" id="search-input" class="search-bar" placeholder="🔍 Поиск фильтра...">
-                <button id="add-btn" class="btn-add">+ Добавить фильтр</button>
+            <div style="display: flex; gap: 15px; margin-bottom: 20px; align-items: center;">
+                <button id="home-btn" class="my-btn secondary" style="padding: 0 20px; height: 50px; font-size: 1.2rem;">Сброс (Домой)</button>
+                <input type="text" id="search-input" class="result" style="width: 400px; height: 50px; margin: 0; font-size: 1.2rem; text-align: left;" placeholder="Поиск фильтра...">
+                <button id="add-btn" class="my-btn execute" style="width: 250px; height: 50px; font-size: 1.2rem; margin: 0;">+ Добавить фильтр</button>
             </div>
-            <div class="cards-grid" id="cards-container">
+            
+            <div class="gallery-grid" id="cards-container">
                 ${cardsHTML}
             </div>
         `;
+
         this.root.insertAdjacentHTML('beforeend', html);
         this.addListeners();
     }
 
     addListeners() {
-        document.getElementById('home-btn').addEventListener('click', () => { this.currentData = [...filtersData]; this.render(); });
-        
-        // Поиск (Фильтрация)
+        // Домой (Сброс)
+        document.getElementById('home-btn').addEventListener('click', () => { 
+            this.currentData = [...filtersData]; 
+            this.render(); 
+        });
+
+        // Поиск
         document.getElementById('search-input').addEventListener('input', (e) => {
             const query = e.target.value.toLowerCase();
             this.currentData = filtersData.filter(f => f.name.toLowerCase().includes(query));
             this.render();
             const input = document.getElementById('search-input');
-            input.value = query; input.focus();
+            input.value = query; 
+            input.focus();
         });
 
         // Добавление
         document.getElementById('add-btn').addEventListener('click', () => {
             if (filtersData.length > 0) {
-                const newCard = { ...filtersData[0], id: Date.now(), name: filtersData[0].name + " (Копия)" };
+                const newCard = { ...filtersData[0], id: Date.now(), name: "Новый фильтр" };
                 filtersData.push(newCard);
                 this.currentData = [...filtersData];
                 this.render();
             }
         });
 
-        // Делегирование (Удаление и Подробнее)
+        // События на карточках (Делегирование)
         document.getElementById('cards-container').addEventListener('click', (e) => {
+            const id = parseInt(e.target.dataset.id);
+            
+            // Удаление
             if (e.target.classList.contains('btn-delete')) {
-                const id = parseInt(e.target.dataset.id);
                 const index = filtersData.findIndex(f => f.id === id);
                 if(index > -1) filtersData.splice(index, 1);
                 this.currentData = [...filtersData];
                 this.render();
             }
+            
+            // РЕДАКТИРОВАНИЕ НАЗВАНИЯ
+            if (e.target.classList.contains('btn-edit')) {
+                const filter = filtersData.find(f => f.id === id);
+                const newName = prompt("Введите новое название фильтра:", filter.name);
+                if (newName && newName.trim() !== "") {
+                    filter.name = newName;
+                    this.currentData = [...filtersData];
+                    this.render();
+                }
+            }
+
+            // Подробнее
             if (e.target.classList.contains('btn-detail')) {
-                this.navigate('detail', parseInt(e.target.dataset.id));
+                this.navigate('detail', id);
             }
         });
     }
