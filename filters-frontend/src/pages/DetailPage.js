@@ -1,4 +1,3 @@
-// файл: src/pages/DetailPage.js
 import { filtersData } from '../mockData.js';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
@@ -30,34 +29,36 @@ export class DetailPage {
 
     render() {
         this.root.innerHTML = '';
-
         if (!this.filter) return;
 
         const html = `
-            <button id="home-btn" class="my-btn secondary" style="padding: 0 20px; height: 50px; font-size: 1.2rem; margin-bottom: 20px;">&larr; Вернуться назад</button>
+            <div style="width: 100%; padding: 20px 50px;">
+                <button id="home-btn" class="my-btn secondary" style="padding: 0 20px; height: 45px; font-size: 1.1rem; margin-bottom: 20px;">&larr; Вернуться назад</button>
+            </div>
             
-            <div class="filter-card" style="max-width: 900px; padding: 40px;">
+            <div class="filter-card" style="max-width: 900px; width: 90%; padding: 40px; margin: 0 auto;">
                 <div class="result" style="white-space: normal; height: auto; font-size: 2rem; padding: 20px;">${this.filter.name}</div>
                 
-                <!-- ЖЕСТКО ЗАДАЕМ ВЫСОТУ ДЛЯ 3D МОДЕЛИ -->
                 <h3 style="color:#1b5c87; margin-top: 20px;">3D Модель (Audio DSP):</h3>
                 <div id="model-container" style="width: 100%; height: 450px; background: #e0e0e8; border-radius: 12px; border: 2px solid #2c3e50; margin-bottom: 20px; overflow: hidden;"></div>
                 
                 <p style="text-align:justify; font-size:1.3rem; line-height: 1.6;">${this.filter.description}</p>
+                <p style="color: #2c3e50; font-weight: bold; font-size: 1.3rem;">Тип: <span style="color: #276221">${this.filter.type}</span></p>
                 
                 <hr style="width:100%; border: 1px solid #ccc; margin: 30px 0;">
                 
                 <h3 style="color:#276221">Аналитика сигнала (ДЗ)</h3>
                 <button id="run-analytics-btn" class="my-btn execute" style="width: 300px; height: 60px; font-size: 1.3rem;">Запустить расчеты</button>
                 
-                <div id="analytics-result" class="result" style="font-size: 1.2rem; height: auto; padding: 20px; margin-top: 20px; text-align: left; white-space: pre-wrap;">Ожидание...</div>
+                <!-- ИСПРАВЛЕННЫЙ БЛОК: display block, большой line-height, без класса result -->
+                <div id="analytics-result" style="display: block; background: #e0e0e8; border: 1px solid #e2e8f0; border-radius: 12px; color: #2c3e50; font-family: 'Courier New', monospace; font-size: 1.3rem; padding: 25px; margin-top: 20px; width: 100%; text-align: left; line-height: 2.0;">
+                    Ожидание...
+                </div>
             </div>
         `;
 
         this.root.insertAdjacentHTML('beforeend', html);
         this.addListeners();
-        
-        // Маленькая задержка перед рендером 3D, чтобы DOM точно обновился
         setTimeout(() => this.initThreeJS(), 100);
     }
 
@@ -66,7 +67,7 @@ export class DetailPage {
         
         document.getElementById('run-analytics-btn').addEventListener('click', () => {
             const resDiv = document.getElementById('analytics-result');
-            resDiv.innerHTML = "Считаем...\n";
+            resDiv.innerHTML = "Считаем...<br><br>";
 
             const inputSignal = [23, 78, 90, 567, 231];
             const userConfig = { type: this.filter.type, cutoff: 1000 };
@@ -82,10 +83,11 @@ export class DetailPage {
                 steps++;
             } while (stabilityLevel < 100);
 
+            // ИСПОЛЬЗУЕМ <br><br> ДЛЯ ЖЕСТКОГО ПЕРЕНОСА СТРОК
             resDiv.innerHTML = `
-<b>1. Постоянная составляющая сигнала:</b> ${dcOffset} (Функция №1.8)
-<b>2. Итоговая конфигурация фильтра:</b> ${JSON.stringify(finalConfig)} (Функция №3.1)
-<b>3. Стабилизация фильтра (do-while):</b> Достигнута за ${steps} шагов.
+                <strong style="color:#1b5c87;">1. Постоянная составляющая сигнала:</strong> ${dcOffset} (Функция №1.8)<br><br>
+                <strong style="color:#1b5c87;">2. Итоговая конфигурация фильтра:</strong> ${JSON.stringify(finalConfig)} (Функция №3.1)<br><br>
+                <strong style="color:#1b5c87;">3. Стабилизация фильтра (do-while):</strong> Достигнута за ${steps} шагов.
             `;
         });
     }
@@ -114,7 +116,6 @@ export class DetailPage {
         scene.add(dirLight);
 
         const loader = new GLTFLoader();
-        // РАБОЧАЯ 3D МОДЕЛЬ АУДИО УСТРОЙСТВА
         loader.load('https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/BoomBox/glTF-Binary/BoomBox.glb', (gltf) => {
             const model = gltf.scene;
             model.scale.set(80, 80, 80); 
